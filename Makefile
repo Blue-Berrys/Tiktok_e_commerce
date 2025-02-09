@@ -49,3 +49,9 @@ gen-order-client:
 gen-order-server:
 	@cd app/order && ${CWGO} server --type RPC --service order --module ${ROOT_MOD}/app/order --I ../../idl --idl ../../idl/order.proto --pass "-use ${ROOT_MOD}/rpc_gen/kitex_gen"
 
+.PHONY:gen-email-client
+gen-email-client:
+	@cd rpc_gen && ${CWGO} client --type RPC --service email --module ${ROOT_MOD}/rpc_gen --I ../idl --idl ../idl/email.proto
+.PHONY:gen-email-server
+gen-email-server:
+	@cd app/email && ${CWGO} server --type RPC --service email --module ${ROOT_MOD}/app/email --I ../../idl --idl ../../idl/email.proto --pass "-use ${ROOT_MOD}/rpc_gen/kitex_gen"
